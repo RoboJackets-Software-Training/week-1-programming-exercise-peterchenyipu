@@ -34,27 +34,9 @@ void printVector(std::vector<double> vector, std::string name) {
   std::cout << "}" << std::endl;
 }
 
-int main() {
-  std::vector<double> x;
-  std::vector<double> w;
+
+std::vector<double> convolveIt(std::vector<double> x, std::vector<double> w, bool pack_with_zeros) {
   std::vector<double> y;
-  bool pack_with_zeros = true;
-
-  std::string s;
-  std::cin >> s;
-  if(s == "false") {
-    pack_with_zeros = false;
-  }
-  std::cin >> s;
-  x = readInVector(s);
-  std::cin >> s;
-  w = readInVector(s);
-
-  // TODO write your code here
-  // =========== START =========
-  printVector(x, "x");
-  printVector(w, "w");
-  //printVector(y, "y");
   int offset = w.size() / 2;
   for (int i = 0; i < x.size(); i++) { // start convolve
     int wIndex = 0;
@@ -81,7 +63,32 @@ int main() {
     }
     y.push_back(sum);
   }
+  return y;
+}
 
+int main() {
+  std::vector<double> x;
+  std::vector<double> w;
+  std::vector<double> y;
+  bool pack_with_zeros = true;
+
+  std::string s;
+  std::cin >> s;
+  if(s == "false") {
+    pack_with_zeros = false;
+  }
+  std::cin >> s;
+  x = readInVector(s);
+  std::cin >> s;
+  w = readInVector(s);
+
+  // TODO write your code here
+  // =========== START =========
+  printVector(x, "x");
+  printVector(w, "w");
+  //printVector(y, "y");
+  
+  y = convolveIt(x, w, pack_with_zeros);
   printVector(y, "");
   // =========== END ===========
 
