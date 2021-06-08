@@ -28,7 +28,7 @@ void printVector(std::vector<double> vector, std::string name) {
   for (int i = 0; i < vector.size(); i++) {
     std::cout << vector[i];
     if (i != vector.size() - 1) {
-      std::cout << ",";
+      std::cout << ", ";
     }
   }
   std::cout << "}" << std::endl;
